@@ -8,6 +8,10 @@ thirdparty/*
 *Makefile
 *CmakeCache.txt
 CMakeFiles/*
+src/*/CMakeFiles/*/*
+src/apps/*/CMakeFiles/*
 bin/*
 docs/*
 *.cmake
+*.marks
+
