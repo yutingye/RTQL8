@@ -1,0 +1,13 @@
+syntax: glob
+*.a
+*.o
+*.d
+*.swp
+.DS_Store
+thirdparty/*
+*Makefile
+*CmakeCache.txt
+CMakeFiles/*
+bin/*
+docs/*
+*.cmake
