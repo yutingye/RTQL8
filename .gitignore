@@ -6,7 +6,7 @@ syntax: glob
 .DS_Store
 thirdparty/*
 *Makefile
-*CmakeCache.txt
+*CMakeCache.txt
 CMakeFiles/*
 src/*/CMakeFiles/*/*
 src/apps/*/CMakeFiles/*
