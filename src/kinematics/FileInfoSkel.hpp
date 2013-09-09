@@ -175,10 +175,11 @@ namespace rtql8 {
             output<<"\nmass {\n";
             for(int i=0; i<mSkel->getNumNodes(); i++){
                 if(i>=_numLinks) break;
-                string massname = mSkel->getNode(i)->getName();
-                massname += "_mass";
-                output<<massname<<" { "<<mSkel->getNode(i)->getMass()<<" }\n";
-
+                if (mSkel->getNode(i)->getVisualShape()){
+                    string massname = mSkel->getNode(i)->getName();
+                    massname += "_mass";
+                    output<<massname<<" { "<<mSkel->getNode(i)->getVisualShape()->getMass()<<" }\n";
+                }
             }
             output<<"}\n";
 
