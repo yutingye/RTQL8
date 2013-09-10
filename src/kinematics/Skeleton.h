@@ -39,6 +39,7 @@
 #define KINEMATICS_SKELETON_H
 
 #include <vector>
+#include <map>
 #include <Eigen/Dense>
 #include "renderer/RenderInterface.h"
 
@@ -117,6 +118,7 @@ namespace rtql8 {
             std::vector<Joint*> mJoints;
 
             double mMass;
+            std::map<std::string, int> mNodeNameMap;
         };
 
     } // namespace kinematics

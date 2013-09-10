@@ -73,6 +73,18 @@ namespace rtql8 {
                 return v*aa.angle();
             }
 
+            Vector3d eulerToExp(Vector3d& v, RotationOrder order) {
+                Matrix3d m = eulerToMatrix(v, order);
+                Quaterniond q = matrixToQuat(m);
+                return quatToExp(q);
+            }
+
+            Vector3d expToEuler(Vector3d& e, RotationOrder order) {
+                Quaterniond q = expToQuat(e);
+                Matrix3d m = quatToMatrix(q);
+                return matrixToEuler(m, order);
+            }
+    
     // Note: xyz order means matrix is Rz*Ry*Rx i.e a point as transformed as Rz*Ry*Rx(p)
     // coordinate system transformation as in GL will be written as glRotate(z); glRotate(y); glRotate(x)
             Vector3d matrixToEuler(Matrix3d& m, RotationOrder order) {

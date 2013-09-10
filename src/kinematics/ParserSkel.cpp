@@ -1956,12 +1956,10 @@ void __createMarker( char* name, doubleVec3 offset, int id, char* node_name ) {
 
     BodyNode *node = NULL;
 
-    cout << "   reading marker: name\n";
-
     char fullNodeName[256];
     strcpy(fullNodeName, namePrefix);
     strcat(fullNodeName, node_name);
-
+ 
     //look up the node it's attached to by node name
     for( int i=0;i<num_nodes;i++ ) {
         if( !strcmp(node_lookup[i].name,fullNodeName) ) {
@@ -1981,6 +1979,8 @@ void __createMarker( char* name, doubleVec3 offset, int id, char* node_name ) {
     strcpy(fullName, namePrefix);
     strcat(fullName, name);
 
+    cout << "   reading marker: " << fullName << endl;
+    
     Vector3d vecOffset(offset[0],offset[1],offset[2]);
     Marker *tempMarker = new Marker(fullName, vecOffset, node);  
     gSkel->addMarker(tempMarker);
@@ -2016,7 +2016,7 @@ Dof* __createDOF( char* name, double val, double lo, double hi ) {
     dof_lookup[num_dofs].dof = d;
     num_dofs++;
 
-    cout << "   reading dof: name\n";
+    cout << "   reading dof: " << fullName << endl;
 
     return d;
 }
@@ -2051,7 +2051,7 @@ void __startNode( const char* s, int id ) {
     // create a new node
     // BodyNode* newNode = new BodyNode( fullName );
     BodyNode* newNode = gSkel->createBodyNode( fullName );
-    cout << "   reading node: s\n";
+    cout << "   reading node: " << fullName << endl;
 
     // push the cur_node (parent) to the stack
     if( cur_node != NULL ){
@@ -2113,7 +2113,7 @@ void __createTranslate( dofVec3 v )
     char *commonName = new char[pos + 1];
     strncpy(commonName, v[0]->getName(), pos);
     commonName[pos] = '\0';
-    cout << "common name is commonName\n";
+    cout << "common name is " << commonName << endl;
     //----------
 
     // create new transformation

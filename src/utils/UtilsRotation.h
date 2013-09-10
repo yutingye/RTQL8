@@ -56,6 +56,10 @@ namespace rtql8 {
             Eigen::Quaterniond expToQuat(Eigen::Vector3d& v);
             Eigen::Vector3d quatToExp(Eigen::Quaterniond& q);
 
+            Eigen::Vector3d eulerToExp(Eigen::Vector3d& v, 
+                                       RotationOrder _order);
+            Eigen::Vector3d expToEuler(Eigen::Vector3d& e,
+                                       RotationOrder _order);
 
             // Note: xyz order means matrix is Rz*Ry*Rx i.e a point as
             // transformed as Rz*Ry*Rx(p)

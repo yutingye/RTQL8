@@ -80,6 +80,7 @@ namespace rtql8 {
 
         void Skeleton::addNode(BodyNode *_b, bool _addParentJoint) {
             mNodes.push_back(_b);
+            mNodeNameMap[_b->getName()] = mNodes.size()-1;
             _b->setSkelIndex(mNodes.size()-1);
             if (_addParentJoint)
                 addJoint(_b->getParentJoint());
@@ -128,25 +129,20 @@ namespace rtql8 {
         }
 
         BodyNode* Skeleton::getNode(const char* const name) {
-            const int nNodes = getNumNodes();
-            for(int i = 0; i < nNodes; i++){
-                BodyNode* node = getNode(i);
-                if (strcmp(name, node->getName()) == 0) {
-                    return node;
-                }
-            }
-            return NULL;
+            const std::map<string, int>::iterator itr = 
+                mNodeNameMap.find(name);
+            if (itr != mNodeNameMap.end())
+                return getNode(itr->second);
+            else return NULL;
         }
 
         int Skeleton::getNodeIndex(const char* const name) {
-            const int nNodes = getNumNodes();
-            for(int i = 0; i < nNodes; i++){
-                BodyNode* node = getNode(i);
-                if (strcmp(name, node->getName()) == 0) {
-                    return i;
-                }
-            }
-            return -1;
+            const std::map<string, int>::iterator itr = 
+                mNodeNameMap.find(name);
+            
+            if (itr != mNodeNameMap.end())
+                return itr->second;
+            else return -1;
         }
 
         Vector3d Skeleton::getWorldCOM() {
