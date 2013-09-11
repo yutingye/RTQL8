@@ -142,6 +142,7 @@ namespace rtql8 {
             glPushMatrix();
             glLoadIdentity();
 
+            // draw border
             glPolygonMode(GL_FRONT, GL_LINE);
             glColor4d(0.0,0.0,0.0,0.5);
             glBegin(GL_QUADS);
@@ -151,7 +152,8 @@ namespace rtql8 {
             glVertex2f(0.15f,0.08f);
             glEnd();
 
-            float portion = (float)currFrame/totalFrame;
+            // draw the filled portion
+            float portion = (float)currFrame/(totalFrame-1);
             float end = 0.15f+portion*0.7f;
             glPolygonMode(GL_FRONT, GL_FILL);
             glColor4d(0.3,0.3,0.3,0.5);
@@ -160,6 +162,18 @@ namespace rtql8 {
             glVertex2f(end, 0.02f);
             glVertex2f(end, 0.08f);
             glVertex2f(0.15f,0.08f);
+            glEnd();
+
+            // draw the "current" indicator
+            float left = 0.15f+portion*0.7f-0.01f;
+            float right = left+0.02f;
+            glPolygonMode(GL_FRONT, GL_FILL);
+            glColor4d(0.8,0.8,0.8,1.0);
+            glBegin(GL_QUADS);
+            glVertex2f(left,0.01f);
+            glVertex2f(right, 0.01f);
+            glVertex2f(right, 0.09f);
+            glVertex2f(left,0.09f);
             glEnd();
 
             glPopMatrix();

@@ -1,0 +1,6 @@
+- create a widget class with draw(), click(), move(), and keyboard()
+  functions
+- implement a progress bar widget
+- implement a command line widget
+- implement a 2D window for graphing with rulers, zoom, translate, and
+  reset

@@ -46,8 +46,8 @@ using namespace rtql8::kinematics;
 
 void MyWindow::displayTimer(int _val)
 {
-    mFrame += 4;
-    if(mFrame == mMaxFrame){
+    mFrame ++;
+    if(mFrame >= mMaxFrame){
         mFrame = 0;
         mPlaying = false;
     }
